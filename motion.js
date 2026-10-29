@@ -80,7 +80,7 @@
         reveals.observe(el);
       });
     }
-    observeReveals('.section-head,.format-lead,.format-panel,.package-card,.parent-review,.contact>div:not([aria-hidden]),.program-card');
+    observeReveals('.section-head,.format-lead,.format-panel,.parent-review,.contact>div:not([aria-hidden]),.program-card');
     document.addEventListener('catalog-rendered', () => observeReveals('.program-card'));
     reducedMotion.addEventListener('change', () => {
       if (reducedMotion.matches) document.documentElement.classList.remove('motion-ready');

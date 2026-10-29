@@ -123,3 +123,11 @@ footer{background:#eee0f4;padding-top:45px;padding-bottom:45px}footer>p,footer>a
 
 /* Keep gallery items painted during horizontal movement; one smooth scroll owns the position. */
 .gallery{scroll-snap-type:none}.gallery>a{scroll-snap-align:none}
+
+/* Stationary package cards avoid pointer-edge oscillation and keep text sharp. */
+.package-card,.package-card:hover{translate:none;transform:none;transition:box-shadow .35s ease}
+.gallery>a,.gallery>a:nth-child(even),.gallery>a:hover{rotate:0deg;translate:none}
+.gallery>a{flex:0 0 calc((100% - 75px)/4)}
+.gallery img{width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;background:#f5edf9}
+@media(max-width:850px){.gallery>a{flex-basis:calc((100% - 25px)/2)}}
+@media(max-width:600px){.gallery>a{flex-basis:80%}}
