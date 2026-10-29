@@ -26,7 +26,7 @@
   const packLists=[['Студия на 2 часа','Аниматор — 1 час','Сервировка на 10 персон'],['Студия на 3 часа','Аниматор — 1 час','Шоу — 30 минут или ростовая кукла — 20 минут'],['Студия на 3 часа','Аниматор + шоу','Аквагрим и фотограф — по 1 часу']];
   document.querySelector('#package-cards').innerHTML=services.filter(s=>s.category==='package').map((s,i)=>`<article class="package-card"><span class="package-seal" aria-hidden="true">${["2 часа","3 часа","3 часа"][i]}</span><span class="package-index">0${i+1} / ГОТОВЫЙ ПРАЗДНИК</span><h3>${s.name}</h3><p>${s.summary}</p><ul>${packLists[i].map(x=>`<li>${x}</li>`).join('')}</ul><strong>${money(s.price)}</strong><button class="button ${i===1?'primary':'secondary'}" data-detail="${s.id}">Посмотреть состав</button></article>`).join('');
   const photos=['543e5f03fdfd81e0','5758b36541dbe6ef','d6ee4e9facdf173d','6fce22e83e9e2a18','181f1203aaec986e','28a5ae485405b51c','f4da4b74ddf75cc6','ed14d56002a8db69'];
-  document.querySelector('#gallery').innerHTML=photos.map((x,i)=>`<a href="https://vk.ru/album-59537402_260766519"><img src="images/${x}.jpg" alt="Аниматор студии Твой день, фото ${i+1}" loading="lazy"><span>Посмотреть ближе</span></a>`).join('');
+  document.querySelector('#gallery').innerHTML=photos.map((x,i)=>`<a href="https://vk.ru/album-59537402_260766519"><img src="images/${x}.jpg" alt="Аниматор студии Твой день, фото ${i+1}" loading="eager" decoding="async"><span>Посмотреть ближе</span></a>`).join('');
   function sync(){
     document.querySelectorAll('[data-request-count]').forEach(x=>x.textContent=selected.size);
     document.querySelector('.request-float').hidden=selected.size===0;

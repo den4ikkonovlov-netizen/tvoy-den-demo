@@ -120,3 +120,6 @@ footer{background:#eee0f4;padding-top:45px;padding-bottom:45px}footer>p,footer>a
 /* Keep movement on compositor-friendly layers without blurring text. */
 @keyframes scene-type-in{from{opacity:0;translate:0 20px}to{opacity:1;translate:0 0}}
 .ribbon-backdrop{will-change:auto}
+
+/* Keep gallery items painted during horizontal movement; one smooth scroll owns the position. */
+.gallery{scroll-snap-type:none}.gallery>a{scroll-snap-align:none}

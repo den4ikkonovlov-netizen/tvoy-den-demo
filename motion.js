@@ -80,7 +80,7 @@
         reveals.observe(el);
       });
     }
-    observeReveals('.section-head,.format-lead,.format-panel,.package-card,.gallery>a,.parent-review,.contact>div:not([aria-hidden]),.program-card');
+    observeReveals('.section-head,.format-lead,.format-panel,.package-card,.parent-review,.contact>div:not([aria-hidden]),.program-card');
     document.addEventListener('catalog-rendered', () => observeReveals('.program-card'));
     reducedMotion.addEventListener('change', () => {
       if (reducedMotion.matches) document.documentElement.classList.remove('motion-ready');
@@ -191,7 +191,14 @@
   });
   const gallery = document.querySelector('.gallery');
   document.querySelectorAll('[data-gallery]').forEach(b => b.addEventListener('click', () => {
-    gallery.scrollBy({ left:(b.dataset.gallery === 'next' ? 1 : -1) * gallery.clientWidth * .8, behavior:reducedMotion.matches ? 'instant' : 'smooth' });
+    const cards = [...gallery.querySelectorAll('a')];
+    if (!cards.length) return;
+    const step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : gallery.clientWidth;
+    const direction = b.dataset.gallery === 'next' ? 1 : -1;
+    const max = Math.max(0, gallery.scrollWidth - gallery.clientWidth);
+    const current = gallery.scrollLeft;
+    const target = Math.max(0, Math.min(max, current + direction * step * 2));
+    gallery.scrollTo({ left: target, behavior:reducedMotion.matches ? 'instant' : 'smooth' });
   }));
 
 })();
