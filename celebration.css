@@ -131,3 +131,11 @@ footer{background:#eee0f4;padding-top:45px;padding-bottom:45px}footer>p,footer>a
 .gallery img{width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;background:#f5edf9}
 @media(max-width:850px){.gallery>a{flex-basis:calc((100% - 25px)/2)}}
 @media(max-width:600px){.gallery>a{flex-basis:80%}}
+
+/* A small expansion retains the pointer inside the card; no moving hover boundary. */
+.package-card{transform-origin:center;transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease}
+.package-card:hover{transform:scale(1.015);box-shadow:0 22px 45px #5d3c7625}
+.motion-ready .package-card.reveal{transform:translate3d(0,20px,0);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease}
+.motion-ready .package-card.reveal.is-visible{transform:none}
+.motion-ready .package-card.reveal.is-visible:hover{transform:scale(1.015)}
+@media(prefers-reduced-motion:reduce){.package-card:hover{transform:none!important}}
