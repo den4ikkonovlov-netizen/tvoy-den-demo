@@ -139,3 +139,20 @@ footer{background:#eee0f4;padding-top:45px;padding-bottom:45px}footer>p,footer>a
 .motion-ready .package-card.reveal.is-visible{transform:none}
 .motion-ready .package-card.reveal.is-visible:hover{transform:scale(1.015)}
 @media(prefers-reduced-motion:reduce){.package-card:hover{transform:none!important}}
+
+/* Keep pointer targets steady while their contents animate. */
+.motion-ready .package-card.reveal,.motion-ready .gallery>a.reveal{transform:none;opacity:0;transition:opacity .65s ease,box-shadow .35s ease;transition-delay:var(--reveal-delay,0ms)}
+.motion-ready .package-card.reveal.is-visible,.motion-ready .gallery>a.reveal.is-visible{opacity:1;transform:none}
+.package-card:hover,.motion-ready .package-card.reveal.is-visible:hover{transform:none;box-shadow:0 22px 45px #5d3c7625}
+.package-card>h3,.package-card>ul,.package-card>strong,.package-card>.package-seal{transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover) and (pointer:fine){.package-card:hover>h3,.package-card:hover>ul,.package-card:hover>strong{transform:translateY(-5px)}.package-card:hover>.package-seal{transform:rotate(-10deg) scale(1.08)}.gallery>a:hover img,.gallery>a:focus-visible img{transform:scale(.97)}}
+.gallery img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.package-card:first-child .button{background:#704596;color:#fff;border:1px solid #704596}
+.package-card:first-child .button:hover{background:#5f3787;color:#fff}
+.program-picture{aspect-ratio:1/1;background:#f4ebf8}
+.program-picture img{object-fit:contain}
+@media(max-width:600px){.program-picture{aspect-ratio:1/1}}
+@media(prefers-reduced-motion:reduce){.package-card>h3,.package-card>ul,.package-card>strong,.package-card>.package-seal,.gallery img{transform:none!important;transition:none!important}}
+
+.program-picture:hover img{transform:scale(.98)}
+@media(prefers-reduced-motion:reduce){.program-picture:hover img{transform:none!important}}
